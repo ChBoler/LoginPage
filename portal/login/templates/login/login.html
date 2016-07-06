@@ -1,0 +1,15 @@
+<h3>Atumsoft Login</h3><br/>
+
+{# Display an error string if this page is called with one #}
+{% if error_string %}<p><strong>{{ error_string }}</strong></p>{% endif %}
+
+<form action="{% url 'login:homePage' %}" method="get">
+
+<fieldset>
+Username: &nbsp;<input type="text" name="username" value="" /><br/>
+Password: &nbsp; <input type="text" name="password" value="" /><br/>
+</fieldset>
+
+{# Submit button; calls logic based on provided user/pass fields #}
+<input type="submit" value="Login">
+</form>
