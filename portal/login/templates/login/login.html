@@ -3,7 +3,8 @@
 {# Display an error string if this page is called with one #}
 {% if error_string %}<p><strong>{{ error_string }}</strong></p>{% endif %}
 
-<form action="{% url 'login:homePage' %}" method="get">
+<form action="{% url 'login:credentials' %}" method="post">
+{% csrf_token %}
 
 <fieldset>
 Username: &nbsp;<input type="text" name="username" value="" /><br/>
