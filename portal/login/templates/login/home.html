@@ -1,1 +1,6 @@
 {{ displayString }}
+
+<form action="{% url 'login:logoutUser' %}" method="post">
+{% csrf_token %}
+    <input type="submit" value="Logout">
+</form>

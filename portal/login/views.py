@@ -1,33 +1,37 @@
-from django.shortcuts import render_to_response
-from .models import TestPermission
+from django.shortcuts import render_to_response, render
+from django.http import HttpResponseRedirect
+from django.views.generic import TemplateView
+from .models import UserPermissions
 
 from django.views import generic
 from django.template import RequestContext
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Login screen
 class LoginIndex(generic.TemplateView):
     template_name = 'login/login.html'
 
-#def loginIndex(request):
-#    return HttpResponse("Placeholder text")
-
-# Test for submitting login
+# Page to redirect to after successful login
 class HomePage(generic.TemplateView):
     template_name = 'login/home.html'
 
-# Handling for retrieving the username and password
+    # Redirect to other view if trying to go to the page manually
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect('/login/')
+        return super(HomePage, self).dispatch(request, *args, **kwargs)
 
-# For time reasons, users are currently being created manually by CDing to the manage.py file and running the
-# below code in 'python manage.py shell'. Consider an interface to add users a TODO, since this would require
-# permissions to create and manage users, GUI design, and other work there is not time for.
+def logoutUser(request):
+    # Log out the user
+    logout(request)
 
-# from django.contrib.auth.models import User
-# user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
-# user.save()
+    # Redirect to the login page
+    return render(request, 'login/login.html', {
+        'error_string': 'User logged out'
+    })
+
 
 def getCredentials(request):
-    # Define the test string
     displayString = ''
 
     # Grab the username and password here from the forms
@@ -39,14 +43,17 @@ def getCredentials(request):
 
     # Basic authentication stuff
     if usertoken is None:
-        displayString = 'Invalid username or password'
+
+        return render(request, 'login/login.html', {
+            'error_string': 'Invalid username or password'
+        })
 
         # Bad credentials given; pack up and go to error string
         # TODO: if this gets used in mainstream production, move the display call to its own method
-        credDict = {'displayString': displayString}
-        return render_to_response('login/home.html',
-                                  credDict,
-                                  context_instance=RequestContext(request))
+        #credDict = {'displayString': displayString}
+        #return render_to_response('login/home.html',
+        #    credDict,
+        #    context_instance=RequestContext(request))
     else:
         # Login must be called after authenticating or will raise an error. Pretty sure that this allows
         # the user to be grabbed from the 'request' object as well
@@ -57,7 +64,7 @@ def getCredentials(request):
         displayString = 'Successfully logged in with a username of "%s" and a password of "%s"' % (username, password)
 
     # Check for custom arbitrary permission
-    if usertoken.has_perm('login.can_see'):
+    if usertoken.has_perm('login.can_see_vm'):
         displayString += "\n\nUser has permission to see this arbitrary text: ABC123"
     else:
         displayString += "\n\nUser does not have permission to see arbitrary text"
@@ -65,5 +72,5 @@ def getCredentials(request):
     # Pack display string into a dict and pass method. Probably a cleaner way to do this!
     credDict = {'displayString': displayString}
     return render_to_response('login/home.html',
-                              credDict,
+                            credDict,
                               context_instance=RequestContext(request))
