@@ -1,6 +1,323 @@
-{{ displayString }}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+    <title>Atumsoft: Dashboard</title>
 
-<form action="{% url 'login:logoutUser' %}" method="post">
-{% csrf_token %}
-    <input type="submit" value="Logout">
-</form>
+    <link rel="icon" href="{% static 'img/atumsoft_favicon.png' %}" type="image/gif" sizes="16x16">
+
+    <!-- CSS  -->
+    <link href="{% static 'min/plugin-min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'min/custom-min.css' %}" type="text/css" rel="stylesheet" >
+    <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <script src="https://use.fontawesome.com/b13731d214.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+
+    <style type="text/css">
+
+    body {
+        background-color: #fff;
+    }
+
+    .errors { color: red; }
+    .errorIcon { background: url(<i class="fa fa-exclamation-circle red-text" aria-hidden="true"></i>);
+    }
+
+    </style>
+</head>
+<body id="top" class="scrollspy">
+
+<!-- Pre Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+
+</div>
+
+<!--Navigation-->
+ <div class="navbar-fixed">
+    <nav id="nav_f" class="default_color" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+            <a href="index.html" id="logo-container" class="brand-logo">Atumsoft</a>
+            <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="#">Change Password</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'login:logoutUser' %}">Log Out</a>
+                    </li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="#">User Name</a></li>
+                    <li><a href="#">Log Out</a></li>
+                </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+<!--Intro and service-->
+<div id="intro" class="section scrollspy">
+    <div class="container">
+        <div class="row">
+            <div  class="col s6">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Work-->
+<div class="section scrollspy">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4 l4">
+                <div class="card">
+
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="#">
+                    </div>
+
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-4" id="#top">
+                            Instrument 1
+                            <span class="activeCheck">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </span>
+                                <!-- <i class="fa fa-exclamation-circle red-text" aria-hidden="true"></i> -->
+                            <i class="mdi-navigation-more-vert right activator"></i>
+                        </span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Instrument 1<i class="mdi-navigation-close right"></i></span>
+                            <a href="">
+                                <i class="fa fa-share" aria-hidden="true"></i>
+                                Share
+                            </a>
+                            <br>
+                            <a href="">
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                Report Error
+                            </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m4 l4">
+                <div class="card">
+
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="#">
+                    </div>
+
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-4">
+                            Instrument 2
+                            <span class="activeCheck">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </span>
+                        <i class="mdi-navigation-more-vert right activator"></i></span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Instrument 2<i class="mdi-navigation-close right"></i></span>
+                            <a href="">
+                                <i class="fa fa-share" aria-hidden="true"></i>
+                                Share
+                            </a>
+                            <br>
+                            <a href="">
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                Report Error
+                            </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col s12 m4 l4">
+                <div class="card">
+
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="#">
+                    </div>
+
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-4">
+                            Instrument 3
+                            <span class="activeCheck">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </span>
+                            <i class="mdi-navigation-more-vert activator right"></i></span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Instrument 3<i class="mdi-navigation-close right"></i></span>
+                            <a href="">
+                                <i class="fa fa-share" aria-hidden="true"></i>
+                                Share
+                            </a>
+                            <br>
+                            <a href="">
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                Report Error
+                            </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col s12 m4 l4">
+                <div class="card">
+
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="#">
+                    </div>
+
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-4">
+                            Instrument 4
+                            <span class="activeCheck">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </span>
+                            <i class="mdi-navigation-more-vert activator right"></i></span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Instrument 4<i class="mdi-navigation-close right"></i></span>
+                            <a href="">
+                                <i class="fa fa-share" aria-hidden="true"></i>
+                                Share
+                            </a>
+                            <br>
+                            <a href="">
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                Report Error
+                            </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col s12 m4 l4">
+                <div class="card">
+
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="#">
+                    </div>
+
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-4">
+                            Instrument 5
+                            <span class="activeCheck">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </span>
+                            <i class="mdi-navigation-more-vert activator right"></i>
+                        </span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Instrument 5<i class="mdi-navigation-close right"></i></span>
+                            <a href="">
+                                <i class="fa fa-share" aria-hidden="true"></i>
+                                Share
+                            </a>
+                            <br>
+                            <a href="">
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                Report Error
+                            </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col s12 m4 l4">
+                <div class="card">
+
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="#">
+                    </div>
+
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-4">
+                            Intrument 6
+                            <span class="activeCheck">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            </span>
+                            <i class="mdi-navigation-more-vert activator right"></i>
+                        </span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Instrument 6<i class="mdi-navigation-close right"></i></span>
+                            <a href="">
+                                <i class="fa fa-share" aria-hidden="true"></i>
+                                Share
+                            </a>
+                            <br>
+                            <a href="">
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                Report Error
+                            </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <!--  Scripts-->
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
+    <script src="js/materialize.js"></script>
+
+    <script type="text/javascript">
+
+    // error message
+
+    // $("#").validate({
+    //     errorPlacement: function(error, element) {
+    //         error.wrap("<li></li>").appendTo($("#top"));
+    //         $('<div class="errorIcon"></div>').insertAfter(element);
+    //     }
+    // });
+
+    // <ul id="top" class="errors"></ul>
+
+    // .errors { color: red; }
+    // .errorIcon { background: url(errorIcon.png); width: 16px; height: 16px; float: right; }
+
+    $('.activeCheck').click(function(){
+        $(this).find('i').toggleClass('fa-check-circle-o fa-check-circle blue-text')
+        });
+
+    </script>
+
+
+    </body>
+</html>
+
+
+
+{# {{ displayString }} #}
+
+{# <form action="{% url 'login:logoutUser' %}" method="post"> #}
+{# {% csrf_token %} #}
+{#    <input type="submit" value="Logout"> #}
+{# </form> #}

@@ -101,3 +101,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Run 'python manage.py collectstatic' from terminal to populate the static files
+# THIS IS WHERE STATIC FILES ARE PULLED FROM ON COLLECTION NOT WHERE THEY ARE LOADED FROM
+#STATIC_ROOT = '/home/chboler/Atumsoft/LoginPage/portal/static'
+#STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# Where the static files are grabbed from by the templates
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static/'),
+    #os.path.join(SITE_ROOT, 'static/'),
+)

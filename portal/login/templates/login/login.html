@@ -1,15 +1,123 @@
-<h3>Atumsoft Login</h3><br/>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+    <title>Atumsoft: Login</title>
+
+    <link rel="icon" href="{% static 'img/atumsoft_favicon.png' %}" type="image/gif" sizes="16x16">
+
+    <!-- CSS  -->
+    <link href="{% static 'min/plugin-min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'min/custom-min.css' %}" type="text/css" rel="stylesheet" >
+    <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <script src="https://use.fontawesome.com/b13731d214.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+
+    <style type="text/css">
+
+
+
+    </style>
+</head>
+<body id="top" class="scrollspy">
+
+<!-- Pre Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+
+</div>
+
+<!--Navigation-->
+ <div class="navbar-fixed">
+    <nav id="nav_f" class="default_color" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+            <a href="index.html" id="logo-container" class="brand-logo">Atumsoft</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+<!--Intro and service-->
+<div id="intro" class="section scrollspy">
+    <div class="container">
+        <div class="row">
+            <div  class="loginBox">
+
+            {# TODO: make this look better #}
+            {% if error_string %}<p><strong><font color="red">{{ error_string }}</font></strong></p>{% endif %}
+
+            <form class="col s12" action="{% url 'login:credentials' %}" method="post">
+                {% csrf_token %}
+                    <div class="row loginForm">
+                        <div class="input-field">
+                            <i class="fa fa-envelope prefix blue-text" aria-hidden="true"></i>
+                            <input id="icon_email" name="username" type="text" class="validate blue-text">
+                            <label for="icon_email" class="blue-text">Username</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="fa fa-lock prefix blue-text" aria-hidden="true"></i>
+                            <input id="icon_password" name="password" type="password" class="validate blue-text">
+                            <label for="icon_password" class="blue-text">Password</label>
+                        </div>
+                        <div class="center loginButton">
+                            <button class="btn waves-effect waves-light white blue-text darken-1" type="submit">Login
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+    <!--  Scripts-->
+    <script src="{% static 'min/plugin-min.js' %}"></script>
+    <script src="{% static 'min/custom-min.js' %}"></script>
+
+    </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+{# <h3>Atumsoft Login</h3><br/> #}
 {# Display an error string if this page is called with one #}
-{% if error_string %}<p><strong><font color="red">{{ error_string }}</font></strong></p>{% endif %}
+{# {% if error_string %}<p><strong><font color="red">{{ error_string }}</font></strong></p>{% endif %} #}
 
-<form action="{% url 'login:credentials' %}" method="post">
-{% csrf_token %}
+{# <form action="{% url 'login:credentials' %}" method="post"> #}
+{# {% csrf_token %} #}
 
-<fieldset>
-Username: &nbsp;<input type="text" name="username" value="" /><br/>
-Password: &nbsp; <input type="password" name="password" value="" /><br/>
-</fieldset>
+{# <fieldset> #}
+{# Username: &nbsp;<input type="text" name="username" value="" /><br/> #}
+{# Password: &nbsp; <input type="password" name="password" value="" /><br/> #}
+{# </fieldset> #}
 
 {# Submit button; calls logic based on provided user/pass fields #}
-<input type="submit" value="Login">
-</form>
+{# <input type="submit" value="Login"> #}
+{# </form> #}

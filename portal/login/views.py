@@ -30,6 +30,15 @@ def logoutUser(request):
         'error_string': 'User logged out'
     })
 
+# Method to lookup a username based on the provided email
+# def _is_valid_email(email):
+#     from django.core.validators import validate_email
+#     from django.core.validators import ValidationError
+#     try:
+#         validate_email(email)
+#         return True
+#     except ValidationError:
+#         return False
 
 def getCredentials(request):
     displayString = ''
@@ -47,13 +56,6 @@ def getCredentials(request):
         return render(request, 'login/login.html', {
             'error_string': 'Invalid username or password'
         })
-
-        # Bad credentials given; pack up and go to error string
-        # TODO: if this gets used in mainstream production, move the display call to its own method
-        #credDict = {'displayString': displayString}
-        #return render_to_response('login/home.html',
-        #    credDict,
-        #    context_instance=RequestContext(request))
     else:
         # Login must be called after authenticating or will raise an error. Pretty sure that this allows
         # the user to be grabbed from the 'request' object as well
